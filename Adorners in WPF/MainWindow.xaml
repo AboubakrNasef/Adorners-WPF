@@ -3,14 +3,31 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:Adorners_in_WPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Canvas Name="cnvs" >
-        <TextBlock Name="textBlock"></TextBlock>
-        <Button Canvas.Left="169" Canvas.Top="54" Width="50" Height="30">hello</Button>
-        <Ellipse Fill="Blue"  Name="elip1" Height="50" Width="50" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="200" Canvas.Top="100"/>
-        <Ellipse Fill="Green" Name="elip2" Height="50" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="400" Canvas.Top="100"/>
-        <Ellipse Fill="Red"  Name="elip3" Height="50" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="100" Canvas.Top="200"/>
+
+        <Rectangle Canvas.Left="169" Fill="Yellow" Canvas.Top="54" Width="50" Height="30">
+            <Behaviors:Interaction.Behaviors>
+                <Behaviors:MouseDragElementBehavior/>
+            </Behaviors:Interaction.Behaviors>
+        </Rectangle>
+        <Ellipse Fill="Blue"  Name="elip1" Height="50" Width="50" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="200" Canvas.Top="100">
+            <Behaviors:Interaction.Behaviors>
+                <Behaviors:MouseDragElementBehavior/>
+            </Behaviors:Interaction.Behaviors>
+        </Ellipse>
+        <Ellipse Fill="Green" Name="elip2" Height="50" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="400" Canvas.Top="100">
+            <Behaviors:Interaction.Behaviors>
+                <Behaviors:MouseDragElementBehavior/>
+            </Behaviors:Interaction.Behaviors>
+        </Ellipse>
+        <Ellipse Fill="Red"  Name="elip3" Height="50" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="100" Canvas.Top="200">
+            <Behaviors:Interaction.Behaviors>
+                <Behaviors:MouseDragElementBehavior/>
+            </Behaviors:Interaction.Behaviors>
+        </Ellipse>
     </Canvas>
 </Window>

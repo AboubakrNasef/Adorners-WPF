@@ -46,23 +46,27 @@ namespace Adorners_in_WPF
         private void uiElementDown(object sender, MouseButtonEventArgs e)
         {
             var uiElement = sender as UIElement;
+            UIElement LastadornerUI=null;
             if (uiElement == null) { return; }
             if (e.ChangedButton == MouseButton.Right)
             {
                 if (_adornerCount > 0)
                 {
 
-                    var LastadornerUI = cnvs.Children.Cast<UIElement>().FirstOrDefault(ui => AdornerLayer.GetAdornerLayer(ui).GetAdorners(ui) != null);
+                     LastadornerUI = cnvs.Children.Cast<UIElement>().FirstOrDefault(ui => AdornerLayer.GetAdornerLayer(ui).GetAdorners(ui) != null);
                     var lastadorner = AdornerLayer.GetAdornerLayer(LastadornerUI).GetAdorners(LastadornerUI)?.FirstOrDefault(x => x is ResizeAdorner);
                     AdornerLayer.GetAdornerLayer(LastadornerUI).Remove(lastadorner);
                     _adornerCount--;
                 }
-                else
+
+                if (LastadornerUI == uiElement)
                 {
+                    return;
+                }
 
-
-                    var adorner = AdornerLayer.GetAdornerLayer(uiElement).GetAdorners(uiElement)?.FirstOrDefault(x => x is ResizeAdorner);
-                    if (adorner != null)
+                var adorner = AdornerLayer.GetAdornerLayer(uiElement).GetAdorners(uiElement)?.FirstOrDefault(x => x is ResizeAdorner);
+              
+                if (adorner != null)
                     {
                         _adornerCount--;
                         AdornerLayer.GetAdornerLayer(uiElement).Remove(adorner);
@@ -73,7 +77,7 @@ namespace Adorners_in_WPF
                         _adornerCount++;
                         AdornerLayer.GetAdornerLayer(uiElement).Add(new ResizeAdorner(uiElement));
                     }
-                }
+                
             }
         }
     }
